@@ -25,3 +25,10 @@ La entrega de este hito será el link en producción de la aplicación cliente.
  - Web Service: https://hito-4-render-2-78b5.onrender.com/api
  - PostgrsSQL: https://dashboard.render.com/d/dpg-ctfo70lumphs73ec4bkg-a
 
+Servicios activos
+ ![alt text](image.png)
+
+Base de dato
+![alt text](image-1.png)
+
+![alt text](image-2.png)
