@@ -37,7 +37,7 @@ const FormularioUsuario = () => {
 
     try {
       // enviar registro al backend en tabla usuarios, POST
-      const response = await axios.post("http://localhost:3000/usuarios", {
+      const response = await axios.post("https://hito-4-render-2-78b5.onrender.com/usuarios", {
         nombre,
         email,
         password,
