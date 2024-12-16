@@ -17,6 +17,7 @@ const UsuariosProvider = ({ children }) => {
   const [MisFavoritos, setMisFavoritos] = useState([]);
   const [sortOption, setSortOption] = useState(""); // Opción de ordenación seleccionada
 
+  const { VITE_API_URL } = import.meta.env;
   // Función para obtener publicaciones con orden
   const fetchPublicaciones = async () => {
     try {

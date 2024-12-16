@@ -6,6 +6,8 @@ import MenuLateral from "../components/MenuLateral";
 import { UsuarioContext } from "../context/UsuarioContext";// para acceder al usuario actual
 import axios from "axios"; // para el backen
 
+const { VITE_API_URL } = import.meta.env;
+
 const Perfil = () => {
   const { setActiveMenu, setUsuario, logout } =
     useContext(UsuarioContext);

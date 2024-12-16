@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { UsuarioContext } from "../context/UsuarioContext";
 import axios from "axios";
 
+const { VITE_API_URL } = import.meta.env;
+
 const CardPublicacion = ({
   publicacion_id,
   imagen,

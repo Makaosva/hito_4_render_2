@@ -5,6 +5,8 @@ import { UsuarioContext } from "../context/UsuarioContext";
 import MenuLateral from "../components/MenuLateral";
 import axios from "axios";
 
+const { VITE_API_URL } = import.meta.env;
+
 const MisFavoritos = () => {
   const { setActiveMenu } = useContext(UsuarioContext);
   const { usuario } = useContext(UsuarioContext);

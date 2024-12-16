@@ -4,6 +4,8 @@ import { UsuarioContext } from "../context/UsuarioContext";
 import { FaSearch } from "react-icons/fa";
 import axios from "axios";
 
+const { VITE_API_URL } = import.meta.env;
+
 const Buscador = () => {
   const { setPublicaciones } = useContext(UsuarioContext);
   const [searchTerm, setSearchTerm] = useState("");

@@ -5,6 +5,8 @@ import { UsuarioContext } from "../context/UsuarioContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const { VITE_API_URL } = import.meta.env;
+
 const ActualizarPerfil = () => {
   const { usuario, setUsuario } = useContext(UsuarioContext);
   const { setActiveMenu } = useContext(UsuarioContext);

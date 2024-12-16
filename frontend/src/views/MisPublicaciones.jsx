@@ -5,6 +5,8 @@ import CardPublicacion from "../components/CardPublicacion";
 import { UsuarioContext } from "../context/UsuarioContext";
 import axios from "axios";
 
+const { VITE_API_URL } = import.meta.env;
+
 const MisPublicaciones = () => {
   const { MisPublicaciones, setMisPublicaciones, setActiveMenu } =
     useContext(UsuarioContext);

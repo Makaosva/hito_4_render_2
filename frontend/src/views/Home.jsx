@@ -9,9 +9,6 @@ import { MdLaptop } from "react-icons/md";
 import { FaMouse } from "react-icons/fa";
 import { FaArrowUp } from "react-icons/fa";
 
-const BASE_URL = import.meta.env.VITE_BASE_URL;
-
-
 const Home = () => {
   const { activeMenu } = useContext(UsuarioContext);
 
