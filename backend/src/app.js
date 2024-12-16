@@ -29,6 +29,10 @@ app.use(express.json());
 app.use("/api", usersRoutes);
 app.use(morgan("dev"));
 
+app.get("/api", (req, res) => {
+  res.json({ message: "¡Hola desde el backend!" });
+});
+
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Server error");
