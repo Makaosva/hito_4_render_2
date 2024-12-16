@@ -56,7 +56,7 @@ const ActualizarPerfil = () => {
     try {
       // Enviar la solicitud PUT para actualizar los datos del usuario
       const response = await axios.put(
-        "http://localhost:3000/usuarios", // Actualiza la URL si es necesario
+        `${VITE_API_URL}/api/usuarios`, // Actualiza la URL si es necesario
         updatedUserData,
         {
           headers: {

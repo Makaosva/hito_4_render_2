@@ -14,7 +14,7 @@ const Tienda = () => {
   // Función para obtener publicaciones desde el backend
   const fetchPublicaciones = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/publicaciones");
+      const response = await axios.get(`${VITE_API_URL}/api/publicaciones`);
      /*  console.log("Password:", pgpassword); */
       setPublicaciones(response.data); // Actualiza el estado con las publicaciones obtenidas
       /* console.log("publicaciones: ", response.data); */

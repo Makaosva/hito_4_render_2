@@ -26,7 +26,7 @@ const MisFavoritos = () => {
       }
 
       try {
-        const response = await axios.get("http://localhost:3000/favoritos",
+        const response = await axios.get(`${VITE_API_URL}/api/favoritos`,
           {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

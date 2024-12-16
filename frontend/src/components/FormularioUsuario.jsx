@@ -3,6 +3,8 @@ import { Button, Col, Form, Row, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"; // para ocupar con el backend
 
+const { VITE_API_URL } = import.meta.env;
+
 const FormularioUsuario = () => {
   const navigate = useNavigate();
   const [nombre, setNombre] = useState("");
@@ -37,7 +39,7 @@ const FormularioUsuario = () => {
 
     try {
       // enviar registro al backend en tabla usuarios, POST
-      const response = await axios.post("https://hito-4-render-2-78b5.onrender.com/api/usuarios", {
+      const response = await axios.post(`${VITE_API_URL}/api/usuarios`, {
         nombre,
         email,
         password,

@@ -30,7 +30,7 @@ const Perfil = () => {
     //se ingresa al perfil despues del inicio de sesion con credenciales y autorizacion con token para backend
     try {
       //solicitud  get a usuarios, la variable data contiene el arreglo con los datos de los usuarios
-      const { data } = await axios.get("http://localhost:3000/usuarios", {
+      const { data } = await axios.get(`${VITE_API_URL}/api/usuarios`, {
         // autorizacion con token
         headers: { Authorization: `Bearer ${token}` },
       });
