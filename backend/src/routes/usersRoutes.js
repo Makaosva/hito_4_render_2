@@ -30,6 +30,7 @@ const pool = require("../config/config");
 router.post("/usuarios", async (req, res) => {
   try {
     const usuario = req.body; // captura los datos
+    console.log("en Post usuario-->", usuario);
     await registrarUsuario(usuario); // registra el usuario
     res.send("Usuario registrado con éxito"); // respuesta con mensaje
   } catch (error) {
@@ -83,7 +84,9 @@ router.post("/publicaciones", authMiddleware, async (req, res) => {
     // Llamamos a la función crearPublicacion que gestiona la lógica de crear una publicación
     await crearPublicacion(req, res); // Delegar la lógica al controlador
   } catch (error) {
-    res.status(500).send({ message: "Error al crear la publicación en la ruta", error });
+    res
+      .status(500)
+      .send({ message: "Error al crear la publicación en la ruta", error });
   }
 });
 
@@ -91,19 +94,23 @@ router.post("/publicaciones", authMiddleware, async (req, res) => {
 router.get("/publicaciones", obtenerPublicaciones);
 
 // Ruta para obtener el email del publicador por su nombre  ejemplo GET /usuarios/email/roroo se obtiene el email, publico
-router.get('/usuarios/email/:nombrePublicador', obtenerEmailPorNombre);
+router.get("/usuarios/email/:nombrePublicador", obtenerEmailPorNombre);
 
 // Ruta para obtener las publicaciones de un usuario autenticado GET /publicaciones/mis-publicaciones con token
-router.get('/publicaciones/mis-publicaciones', authMiddleware, obtenerMisPublicaciones);
+router.get(
+  "/publicaciones/mis-publicaciones",
+  authMiddleware,
+  obtenerMisPublicaciones
+);
 
 // Ruta para agregar favorito POST /favoritos/32  con token
 router.post("/favoritos/:publicacion_id", authMiddleware, agregarFavorito);
 
 // Ruta para obtener los favoritos de un usuario  GET /favoritos con token
-router.get('/favoritos', authMiddleware, obtenerMisFavoritos);
+router.get("/favoritos", authMiddleware, obtenerMisFavoritos);
 
 // Ruta para buscar publicaciones por título, es publico   GET ejemplo localhost:3000/publicaciones/buscar?titulo=kotlin
-router.get('/publicaciones/buscar', buscarPublicaciones);
+router.get("/publicaciones/buscar", buscarPublicaciones);
 
 //para ordenar publicaciones, es publico GET   localhost:3000/publicaciones/ordenar?sort=name-asc
 router.get("/publicaciones/ordenar", ordenarPublicaciones);
@@ -115,10 +122,13 @@ router.post("/boletas/agregar/:publicacion_id", authMiddleware, agregarItems);
 router.get("/obtenerBoletaItems", authMiddleware, obtenerBoletaItems);
 
 //para aumentar o disminuir la cantidad por item   PUT localhost:3000/actualizarCantidad/7 EN BODY "accion": "incrementar" O "disminuir" con token
-router.put("/actualizarCantidad/:item_id",  authMiddleware, actualizarCantidadItem );
+router.put(
+  "/actualizarCantidad/:item_id",
+  authMiddleware,
+  actualizarCantidadItem
+);
 
 //para eliminar item DELETE  localhost:3000/eliminarItem/7 con token
-router.delete("/eliminarItem/:item_id", authMiddleware,eliminarItem);
-
+router.delete("/eliminarItem/:item_id", authMiddleware, eliminarItem);
 
 module.exports = router;
