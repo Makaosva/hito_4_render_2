@@ -12,7 +12,7 @@ const registrarUsuario = async (usuario) => {
   password = passwordEncriptada;
   const values = [nombre, passwordEncriptada, email];
   const consulta =
-    "INSERT INTO usuarios (nombre,password, email) VALUES ($1, $2, $3)"; // se inserta los datos en la tabla usuarios
+    "INSERT INTO usuarios (nombre, password, email) VALUES ($1, $2, $3)"; // se inserta los datos en la tabla usuarios
   await pool.query(consulta, values);
 };
 
