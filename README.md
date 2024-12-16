@@ -15,9 +15,13 @@ La entrega de este hito será el link en producción de la aplicación cliente.
 
 ## Requerimientos
 
-1. Realizar el deploy de la aplicación cliente. (URL: https://hito-4-render-2-client.onrender.com )
-2. Realizar el deploy de la aplicación backend. (URL: https://hito-4-render-2-78b5.onrender.com/api/publicaciones)
-3. Realizar el deploy de la base de datos (URL: https://dashboard.render.com/d/dpg-ctfo70lumphs73ec4bkg-a)
-4. Integrar la aplicación cliente con la aplicación backend en producción. (URL cliente: https://hito-4-render-2-client.onrender.com )
+1. Realizar el deploy de la aplicación cliente. 
+2. Realizar el deploy de la aplicación backend. 
+3. Realizar el deploy de la base de datos 
+4. Integrar la aplicación cliente con la aplicación backend en producción. 
 
+## URLs
+ - Static site: https://hito-4-render-2-client.onrender.com
+ - Web Service: https://hito-4-render-2-78b5.onrender.com/api/publicaciones
+ - PostgrsSQL: https://dashboard.render.com/d/dpg-ctfo70lumphs73ec4bkg-a
 
