@@ -7,7 +7,7 @@ const cors = require("cors");
 // Importar express y se ejecuta para obtener un enrutador (app)
 const express = require("express");
 const app = express();
-const usersRoutes = require("../routes/usersRoutes");
+const usersRoutes = require("./routes/usersRoutes");
 
 // Configuración de CORS para permitir solicitudes con credenciales
 const corsOptions = {
