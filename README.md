@@ -22,6 +22,6 @@ La entrega de este hito será el link en producción de la aplicación cliente.
 
 ## URLs
  - Static site: https://hito-4-render-2-client.onrender.com
- - Web Service: https://hito-4-render-2-78b5.onrender.com/api/publicaciones
+ - Web Service: https://hito-4-render-2-78b5.onrender.com/api
  - PostgrsSQL: https://dashboard.render.com/d/dpg-ctfo70lumphs73ec4bkg-a
 
