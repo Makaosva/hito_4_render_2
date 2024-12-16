@@ -1,5 +1,5 @@
 // las funciones HITO 4
-const pool = require("../src/config/config");
+const pool = require("../config/config");
 const bcrypt = require("bcryptjs"); /// se agrega para encriptado de contraseñas
 const jwt = require("jsonwebtoken");
 

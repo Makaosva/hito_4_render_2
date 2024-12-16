@@ -19,7 +19,7 @@ const {
   obtenerBoletaItems,
   actualizarCantidadItem,
   eliminarItem,
-} = require("../../controllers/usersControllers"); //para las funciones
+} = require("../controllers/usersControllers"); //para las funciones
 const { authMiddleware } = require("../middlewares/authMiddleware");
 const jwt = require("jsonwebtoken"); //para el token
 const pool = require("../config/config");
