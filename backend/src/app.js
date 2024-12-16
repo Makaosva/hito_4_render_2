@@ -6,10 +6,21 @@ const morgan = require("morgan");
 
 const app = express();
 
+const allowedOrigins = [
+  "https://hito-4-render-2-client.onrender.com",
+  "http://localhost:5173",
+];
+
 const corsOptions = {
-  //origin: "http://localhost:5173",
+  function(origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
-  exposedHeaders: ["Authorization"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 };
 
 app.use(cors(corsOptions));
@@ -22,6 +33,5 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Server error");
 });
-
 
 module.exports = app; // Exportamos app para los test
