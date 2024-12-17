@@ -255,7 +255,13 @@ const obtenerMisFavoritos = async (req, res) => {
 //para actualizar el perfil
 const actualizarPerfil = async (req, res) => {
   try {
-    const { nombre, nuevoPassword, confirmar } = req.body;
+    const {
+      nombre,
+      nuevoPassword,
+      confirmar,
+      email: nuevoEmail,
+      password,
+    } = req.body;
     const { email } = req.user; // El email del usuario autenticado
     // Validar si el usuario existe
     const usuario = await pool.query(
@@ -265,24 +271,31 @@ const actualizarPerfil = async (req, res) => {
     if (!usuario.rows.length) {
       return res.status(404).send("Usuario no encontrado");
     }
-    // Validar que las contraseñas coincidan si se están modificando
-    if (nuevoPassword && nuevoPassword !== confirmar) {
-      return res.status(400).send("Las contraseñas no coinciden");
+
+    // Comparar el password actual si se está cambiando
+    if (
+      nuevoPassword &&
+      !(await bcrypt.compare(password, usuario.rows[0].password))
+    ) {
+      return res.status(401).send("El password actual es incorrecto");
     }
+
+    // Validar que las contraseñas nuevas coincidan
+    if (nuevoPassword && nuevoPassword !== confirmar) {
+      return res.status(400).send("Las contraseñas nuevas no coinciden");
+    }
+
     // Si no se pasa un nuevo nombre, se mantiene el actual
     const updatedName = nombre || usuario.rows[0].nombre;
     // Si no se pasa un nuevo email, se mantiene el email actual
-    /*  const updatedEmail = nuevoEmail || email; */
-    const updatedEmail = email; // Se mantiene el email actual
+    const updatedEmail = nuevoEmail || email;
+
     // Validar que si se pasa una nueva contraseña, se encripte correctamente
-    let hashedPassword = usuario.rows[0].password; // Usamos la contraseña actual por defecto
+    let hashedPassword = usuario.rows[0].password;
     if (nuevoPassword) {
-      if (nuevoPassword === "") {
-        return res.status(400).send("La nueva contraseña no puede estar vacía");
-      }
-      hashedPassword = await bcrypt.hash(nuevoPassword, 10); // Encriptamos la nueva contraseña
+      hashedPassword = await bcrypt.hash(nuevoPassword, 10);
     }
-    //para actualizar se ingresa el email
+
     await pool.query(
       "UPDATE usuarios SET nombre = $1, email = $2, password = $3 WHERE email = $4",
       [updatedName, updatedEmail, hashedPassword, email]

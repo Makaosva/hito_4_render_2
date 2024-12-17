@@ -20,8 +20,14 @@ const ActualizarPerfil = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Validar que se ingrese la contraseña actual si se quiere cambiar el password
+    if (nuevoPassword && !password) {
+      alert("Debes ingresar tu contraseña actual para cambiar la contraseña.");
+      return;
+    }
+
     // Validar que las contraseñas nuevas coincidan
-    if (nuevoPassword !== confirmar) {
+    if (nuevoPassword && nuevoPassword !== confirmar) {
       alert("Las contraseñas nuevas no coinciden");
       return;
     }
@@ -53,6 +59,8 @@ const ActualizarPerfil = () => {
 
     if (nuevoPassword) {
       updatedUserData.nuevoPassword = nuevoPassword; // Solo incluir la nueva contraseña si se proporciona
+      updatedUserData.confirmar = confirmar;
+      updatedUserData.password = password; // Incluye la contraseña actual
     }
 
     try {
